@@ -1,2 +1,6 @@
 # acr
-All of the functions and shared types across the whole Acridotheres project
+
+The base for:
+
+- [neozip](https://github.com/acridotheres/neozip)
+- [hssp2](https://github.com/acridotheres/hssp2)
