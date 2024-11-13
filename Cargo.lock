@@ -4,7 +4,7 @@ version = 3
 
 [[package]]
 name = "acr"
-version = "0.3.0"
+version = "0.3.1"
 dependencies = [
  "chrono",
  "crc32fast",
@@ -115,9 +115,9 @@ dependencies = [
 
 [[package]]
 name = "dh"
-version = "0.7.2"
+version = "0.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8043be08612238410cbdf91ea6e30b592f473da7672ac6a80c83be3d920a84e1"
+checksum = "331be32ac5b7c7862c163f07ca1662daf117e1142f21e36f3677d0f6c1629074"
 
 [[package]]
 name = "digest"
