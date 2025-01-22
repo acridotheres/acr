@@ -102,6 +102,16 @@ impl From<ZipMethod> for u16 {
     }
 }
 
+impl From<Method> for ZipMethod {
+    fn from(method: Method) -> Self {
+        use ZipMethod::*;
+        match method {
+            Method::None => Stored,
+            _ => Unsupported,
+        }
+    }
+}
+
 impl From<ZipMethod> for Method {
     fn from(value: ZipMethod) -> Self {
         use ZipMethod::*;
