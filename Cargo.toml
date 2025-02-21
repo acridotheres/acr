@@ -3,7 +3,7 @@ name = "acr"
 description = "All shared code across the whole Acridotheres project"
 license = "MIT"
 repository = "https://github.com/acridotheres/acr"
-version = "0.4.1"
+version = "0.4.2"
 edition = "2021"
 
 [dependencies]

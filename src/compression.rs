@@ -12,6 +12,7 @@ pub enum Method {
     #[default]
     None,
     Deflate,
+    DeflateZlib,
     Lzma,
     Unsupported,
 }

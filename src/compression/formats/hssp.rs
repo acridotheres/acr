@@ -6,6 +6,7 @@ pub enum Hssp4Method {
     None,
     Lzma,
     Deflate,
+    DeflateZlib,
     Unsupported,
 }
 
@@ -15,7 +16,8 @@ impl From<[u8; 4]> for Hssp4Method {
         match &bytes {
             b"NONE" => None,
             b"LZMA" => Lzma,
-            b"DFLT" => Deflate,
+            b"DEFL" => Deflate,
+            b"DFLT" => DeflateZlib,
             _ => Unsupported,
         }
     }
@@ -27,6 +29,7 @@ impl From<Hssp4Method> for [u8; 4] {
         match method {
             None => *b"NONE",
             Lzma => *b"LZMA",
+            DeflateZlib => *b"DEFL",
             Deflate => *b"DFLT",
             _ => *b"\0\0\0\0",
         }
@@ -40,6 +43,7 @@ impl From<Method> for Hssp4Method {
             Method::None => None,
             Method::Lzma => Lzma,
             Method::Deflate => Deflate,
+            Method::DeflateZlib => DeflateZlib,
             _ => Unsupported,
         }
     }
@@ -52,6 +56,7 @@ impl From<Hssp4Method> for Method {
             None => Method::None,
             Lzma => Method::Lzma,
             Deflate => Method::Deflate,
+            DeflateZlib => Method::DeflateZlib,
             _ => Method::Unsupported,
         }
     }

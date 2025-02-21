@@ -1,5 +1,5 @@
 use super::{
-    algorithms::{deflate, lzma},
+    algorithms::{deflate, deflate_zlib, lzma},
     Method,
 };
 use dh::{Readable, Writable};
@@ -30,6 +30,11 @@ pub fn decompress<'a, W: Writable<'a>>(
         Deflate => {
             let mut source = reader.limit(offset, size)?;
             let size = deflate::decompress(&mut source, target)?;
+            Ok(size)
+        }
+        DeflateZlib => {
+            let mut source = reader.limit(offset, size)?;
+            let size = deflate_zlib::decompress(&mut source, target)?;
             Ok(size)
         }
         _ => Err(Error::new(
