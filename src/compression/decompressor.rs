@@ -1,4 +1,7 @@
-use super::{algorithms::lzma, Method};
+use super::{
+    algorithms::{deflate, lzma},
+    Method,
+};
 use dh::{Readable, Writable};
 use std::io::{Error, ErrorKind, Result};
 
@@ -22,6 +25,11 @@ pub fn decompress<'a, W: Writable<'a>>(
         Lzma => {
             let mut source = reader.limit(offset, size)?;
             let size = lzma::decompress(&mut source, target)?;
+            Ok(size)
+        }
+        Deflate => {
+            let mut source = reader.limit(offset, size)?;
+            let size = deflate::decompress(&mut source, target)?;
             Ok(size)
         }
         _ => Err(Error::new(
